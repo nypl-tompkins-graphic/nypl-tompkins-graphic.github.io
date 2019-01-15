@@ -34,18 +34,16 @@
       flex-direction: row;
       justify-content: center;
       align-items: center;
+      flex-wrap: wrap;
     }
     .book {
       position: relative;
-      border: 1px solid var(--foreground);
-      padding: 5px;
-      margin: 5px;
-      width: 300px;
+      /*border: 1px solid var(--foreground);*/
+      /*margin: 1rem 0.5rem;*/
     }
     .book .cover {
-      /*display: block;*/
-      width: 100%;
-      height: auto;
+      width: auto;
+      height: 500px;
     }
 
     .details {
@@ -78,6 +76,8 @@
 </head>
 
 <body>
+  <div class="seperator"> This Month's Book </div>
+  <div class="shelf" id="this-month"></div>
   <div class="seperator"> Upcoming Books </div>
   <div class="shelf" id="upcoming"></div>
   <div class="seperator"> Past Selections </div>

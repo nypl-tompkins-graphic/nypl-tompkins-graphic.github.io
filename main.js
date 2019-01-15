@@ -31,16 +31,22 @@ const compareBook = (a, b) => {
   // const today = new Date('2019-03-01');
   const today = new Date();
 
-  document.getElementById('upcoming').innerHTML = data.books
+  const upcomingBooks = data.books
     .filter(b => b.date >= today)
+    .sort(compareBook);
+  const pastBooks = data.books
+    .filter(b => b.date < today)
     .sort(compareBook)
+    .reverse();
+
+  document.getElementById('this-month').innerHTML = renderBook(upcomingBooks[0]);
+
+  document.getElementById('upcoming').innerHTML = upcomingBooks
+    .filter((b, i) => i > 0)
     .map(renderBook)
     .join('');
 
-  document.getElementById('past').innerHTML = data.books
-    .filter(b => b.date < today)
-    .sort(compareBook)
-    .reverse()
+  document.getElementById('past').innerHTML = pastBooks
     .map(renderBook)
     .join('');
 
