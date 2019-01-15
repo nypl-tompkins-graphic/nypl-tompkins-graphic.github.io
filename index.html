@@ -15,6 +15,7 @@
       font-size: 18px;
       --foreground: black;
       --background: #EEEEEE;
+      --book-details: white;
     }
     body {
       margin: 0px;
@@ -98,6 +99,7 @@
       transition-duration: .5s;
       transition-timing-function: ease;
 
+      color: var(--book-details);
       background-color: rgba(0, 0, 0, 0.8);
     }
     .container:hover .details {
@@ -119,7 +121,7 @@
       margin-top: 2.5em;
     }
     .goodreads a {
-      color: var(--foreground);
+      color: var(--book-details);
     }
 
     @media (max-width: 600px){
