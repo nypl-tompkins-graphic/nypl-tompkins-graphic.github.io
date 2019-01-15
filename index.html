@@ -4,12 +4,29 @@
   <script defer src="main.js"></script>
 
   <style type="text/css">
+    html {
+      font-size: 18px;
+      --foreground: white;
+      --background: black;
+    }
     body {
       margin: 0px;
       text-align: center;
+      color: var(--foreground);
+      background-color: var(--background);
     }
     a {
-      color: white;
+      color: var(--foreground);
+    }
+
+    .seperator {
+      font-size: 2rem;
+      padding: 0.5rem;
+      border-style: solid;
+      border-color: var(--foreground);
+      border-width: 0px;
+      border-top-width: 0.2rem;
+      border-bottom-width: 0.2rem;
     }
 
     .shelf {
@@ -20,7 +37,7 @@
     }
     .book {
       position: relative;
-      border: 1px solid black;
+      border: 1px solid var(--foreground);
       padding: 5px;
       margin: 5px;
       width: 300px;
@@ -49,7 +66,6 @@
       transition-duration: .5s;
       transition-timing-function: ease;
 
-      color: white;
       background-color: rgba(0, 0, 0, 0.8);
     }
     .book:hover .details {
@@ -62,7 +78,8 @@
 </head>
 
 <body>
+  <div class="seperator"> Upcoming Books </div>
   <div class="shelf" id="upcoming"></div>
-  <div> past books </div>
+  <div class="seperator"> Past Selections </div>
   <div class="shelf" id="past"></div>
 </body>

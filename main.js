@@ -24,7 +24,7 @@ const compareBook = (a, b) => {
 }
 
 (async () => {
-  const resp = await fetch('books.yaml');
+  const resp = await fetch(`books.yaml?v=${new Date().getTime()}`);
   const text = await resp.text();
   const data = jsyaml.load(text);
 

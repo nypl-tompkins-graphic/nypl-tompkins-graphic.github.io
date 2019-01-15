@@ -3,27 +3,30 @@ books:
   - date: 2019-05-06
     title: Sabrina
     author: Nick Drnaso
-    cover: lesbian.jpg
+    cover: sabrina.jpg
+    goodreads: https://www.goodreads.com/book/show/37533587-sabrina
 
   - date: 2019-04-01
     title: RX
     author: Rachel Lindsay
-    cover: lesbian.jpg
+    cover: rx.jpg
+    goodreads: https://www.goodreads.com/book/show/37954232-rx
 
   - date: 2019-03-04
     title: The Prince and the Dressmaker
     author: Jen Wang
-    cover: lesbian.jpg
+    cover: prince_dressmaker.jpg
+    goodreads: https://www.goodreads.com/book/show/34506912-the-prince-and-the-dressmaker
 
   - date: 2019-02-04
     title: My Lesbian Experience with Loneliness
     author: Kabi Nagata
-    cover: lesbian.jpg
+    cover: lesbian_experience_loneliness.jpg
     goodreads: https://www.goodreads.com/book/show/33113683-my-lesbian-experience-with-loneliness
 
   - date: 2019-01-07
     title: American Born Chinese
     author: Gene Luen Yang
-    cover: lesbian.jpg
+    cover: american_born_chinese.jpg
     wiki: https://en.wikipedia.org/wiki/American_Born_Chinese
     goodreads: https://www.goodreads.com/book/show/118944.American_Born_Chinese
