@@ -1,35 +1,65 @@
-
+<html>
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Tompkins Square Library Graphic Novel Book Discussion</title>
+  <link rel="shortcut icon" href="nypl.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tompkins Square Library Graphic Novel Book Discussion" />
+  <meta property="og:url" content="https://nypl-tompkins-graphic.github.io/" />
+  <meta property="og:image" content="https://nypl-tompkins-graphic.github.io/nypl.png" />
+
   <script defer src="js-yaml.min.js"></script>
   <script defer src="main.js"></script>
 
   <style type="text/css">
     html {
       font-size: 18px;
-      --foreground: white;
-      --background: black;
+      --foreground: black;
+      --background: #EEEEEE;
     }
     body {
       margin: 0px;
+      margin-bottom: 1rem;
       text-align: center;
       color: var(--foreground);
       background-color: var(--background);
     }
-    a {
-      color: var(--foreground);
-    }
 
     .seperator {
+      width: 500px;
+      margin: 0.5rem auto;
+
       font-size: 2rem;
       padding: 0.5rem;
       border-style: solid;
       border-color: var(--foreground);
       border-width: 0px;
-      border-top-width: 0.2rem;
+      /*border-top-width: 0.2rem;*/
       border-bottom-width: 0.2rem;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+    .seperator:first-child {
+      width: 700px;
+    }
+    .logo {
+      margin: 0.5 2rem;
+      height: 4rem;
+    }
+    .logo:first-child {
+      margin-left: 0px;
+    }
+    .logo:last-child {
+      margin-right: 0px;
     }
 
     .shelf {
+      width: 100%;
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -37,13 +67,20 @@
       flex-wrap: wrap;
     }
     .book {
-      position: relative;
-      /*border: 1px solid var(--foreground);*/
-      /*margin: 1rem 0.5rem;*/
+      font-size: 1rem;
     }
-    .book .cover {
+    #this-month .book {
+      font-size: 1.2rem;
+    }
+    .date {
+      margin: 1em 0em;
+    }
+    .container {
+      position: relative;
+    }
+    .cover {
       width: auto;
-      height: 500px;
+      height: 25em;
     }
 
     .details {
@@ -66,20 +103,65 @@
 
       background-color: rgba(0, 0, 0, 0.8);
     }
-    .book:hover .details {
+    .container:hover .details {
       opacity: 1;
     }
-    .details > div {
-      margin: 5px 0px;
+    .title,
+    .author,
+    .goodreads {
+      margin: 0.2em 0px;
+    }
+
+    .title {
+      font-weight: bold;
+    }
+    .author {
+      font-style: italic;
+    }
+    .goodreads {
+      margin-top: 2.5em;
+    }
+    .goodreads a {
+      color: var(--foreground);
+    }
+
+    @media (max-width: 600px){
+      html {
+        font-size: 16px;
+      }
+      .seperator,
+      .seperator:first-child {
+        width: 75%;
+      }
+      .logo {
+        display: none;
+      }
+      .book,
+      .container {
+        width: 100%;
+      }
+      .cover {
+        width: 100%;
+        height: auto;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="seperator"> This Month's Book </div>
+  <div class="seperator">
+    <img class="logo" src="nypl.png"/>
+    <span>
+      Tompkins Square Library
+      <br/>
+      Graphic Novel Book Discussion
+    </span>
+    <img class="logo" src="nypl.png"/>
+  </div>
   <div class="shelf" id="this-month"></div>
   <div class="seperator"> Upcoming Books </div>
   <div class="shelf" id="upcoming"></div>
   <div class="seperator"> Past Selections </div>
   <div class="shelf" id="past"></div>
 </body>
+</html>
