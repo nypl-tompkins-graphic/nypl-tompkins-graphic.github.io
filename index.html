@@ -10,6 +10,7 @@
   <meta property="og:url" content="https://nypl-tompkins-graphic.github.io/" />
   <meta property="og:image" content="https://nypl-tompkins-graphic.github.io/favicon.png" />
 
+  <link rel="stylesheet" href="tools/ouical.css" />
   <style type="text/css">
     html {
       font-size: 18px;
@@ -73,7 +74,7 @@
     #this-month .book {
       font-size: 1.2rem;
     }
-    .date {
+    .header-date {
       margin: 1em 0em;
     }
     .container {
@@ -115,6 +116,11 @@
       margin: 0.2em 0px;
     }
 
+    .calendar-container a {
+      /*overridding library css*/
+      width: 100% !important;
+      margin-left: 0px !important;
+    }
     .title {
       font-weight: bold;
     }
@@ -124,7 +130,7 @@
     .goodreads {
       margin-top: 2.5em;
     }
-    .goodreads a {
+    a {
       color: var(--book-details);
     }
 
@@ -168,6 +174,7 @@
   <div class="shelf" id="past"></div>
 
   <script src="tools/js-yaml.min.js"></script>
+  <script src="tools/ouical.min.js"></script>
   <script type="text/javascript">
 
     // helper funcs
@@ -194,32 +201,48 @@
         return 0;
       }
     }
+    const generateCalenderLinks = book => {
+      return createCalendar({
+        options: {
+          class: 'calendar-container',
+          id: `calendar-${book.date}`,
+        },
+        data: {
+          title: `NYPL Graphic Novel Book Club - ${book.title}`,
+          start: book.dt,
+          duration: 60,
+          address: 'Tompkins Square Library',
+          // description: 'todo',
+        }
+      });
+    }
 
     // render funcs
-    const renderDate = (book, category) => {
+    const renderHeader = (book, category) => {
+      const headerElm = document.createElement('div');
+      headerElm.classList.add('header-date');
       switch (category) {
         case Category.Past:
-          return '';
+          return null;
         case Category.Current:
-          return `
-            <div class="date">
-              This Month<br/>
-              ${book.displayDate}
-            </div>
+          headerElm.innerHTML = `
+            This Month<br/>
+            ${book.displayDate}
           `;
         default:
-          return `
-            <div class="date">
-              ${book.displayDate}
-            </div>
+          headerElm.innerHTML = `
+            ${book.displayDate}
           `;
       }
+      return headerElm;
     };
-    const renderCover = (book, category) => `
-      <div class="container">
+    const renderCover = (book, category) => {
+      const container = document.createElement('div');
+      container.classList.add('container');
+      container.innerHTML = `
         <img class="cover" src="covers/${book.cover}">
         <div class="details">
-          <div class="date">
+          <div>
             ${category === Category.Past ? `
               ${book.displayDateFull}
             ` : ''}
@@ -236,18 +259,23 @@
             ` : ''}
           </div>
         </div>
-      </div>
-    `;
+      `;
+      container.children[1].children[0].appendChild(generateCalenderLinks(book))
+      return container;
+    };
     const renderBook = (book, category) => {
       if (!book.cover){
-        return '';
+        return null;
       }
-      return `
-        <div class="book">
-          ${renderDate(book, category)}
-          ${renderCover(book, category)}
-        </div>
-      `;
+      const headerElm = renderHeader(book, category);
+      const coverElm = renderCover(book, category)
+      const bookElm = document.createElement('div');
+      bookElm.classList.add('book');
+      if (headerElm){
+        bookElm.appendChild(headerElm);
+      }
+      bookElm.appendChild(coverElm);
+      return bookElm;
     };
 
     // on pageload
@@ -262,9 +290,10 @@
 
       const books = data.books.map(book => {
         book.year = parseFloat(book.date.split('/')[0]);
-        book.month = parseFloat(book.date.split('/')[1]);
+        book.month = parseFloat(book.date.split('/')[1]) - 1;
         book.day = parseFloat(book.date.split('/')[2]);
-        book.monthName = monthNames[book.month - 1];
+        book.monthName = monthNames[book.month];
+        book.dt = new Date(book.year, book.month, book.day, 18);
 
         const todayYear = parseFloat(today.getFullYear());
         book.displayDateShort = `${book.monthName} ${book.day}`;
@@ -283,15 +312,21 @@
         .reverse();
 
       if (upcomingBooks.length){
-        document.getElementById('this-month').innerHTML = renderBook(upcomingBooks[0], Category.Current);
+        document.getElementById('this-month').appendChild(renderBook(upcomingBooks[0], Category.Current));
       }
-      document.getElementById('upcoming').innerHTML = upcomingBooks
+      upcomingBooks
         .filter((b, i) => i > 0)
         .map(book => renderBook(book, Category.Upcoming))
-        .join('');
-      document.getElementById('past').innerHTML = pastBooks
+        .filter(b => b)
+        .forEach(comp => {
+          document.getElementById('upcoming').appendChild(comp);
+        });
+      pastBooks
         .map(book => renderBook(book, Category.Past))
-        .join('');
+        .filter(b => b)
+        .forEach(comp => {
+          document.getElementById('past').appendChild(comp);
+        });
     })();
 
   </script>
