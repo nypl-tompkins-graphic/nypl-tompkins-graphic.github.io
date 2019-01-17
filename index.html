@@ -94,7 +94,7 @@
       text-align: center;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
 
       opacity: 0;
@@ -108,9 +108,10 @@
     .container:hover .details {
       opacity: 1;
     }
-    .title,
-    .author,
-    .goodreads {
+    .details > div {
+      margin: 1em 1em;
+    }
+    .details > div > div {
       margin: 0.2em 0px;
     }
 
@@ -218,18 +219,22 @@
       <div class="container">
         <img class="cover" src="covers/${book.cover}">
         <div class="details">
-          ${category === Category.Past ? `
-            <div class="date">
+          <div class="date">
+            ${category === Category.Past ? `
               ${book.displayDateFull}
-            </div>
-          ` : ''}
-          <div class="title">${book.title}</div>
-          <div class="author">${book.author}</div>
-          ${book.goodreads ? `
-            <div class="goodreads">
-              <a href="${book.goodreads}">Goodreads</a>
-            </div>
-          ` : ''}
+            ` : ''}
+          </div>
+          <div>
+            <div class="title">${book.title}</div>
+            <div class="author">${book.author}</div>
+          </div>
+          <div>
+            ${book.goodreads ? `
+              <div class="goodreads">
+                <a href="${book.goodreads}">Goodreads</a>
+              </div>
+            ` : ''}
+          </div>
         </div>
       </div>
     `;
