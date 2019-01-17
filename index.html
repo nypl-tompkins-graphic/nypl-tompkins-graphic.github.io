@@ -219,33 +219,33 @@
 
     // render funcs
     const renderHeader = (book, category) => {
-      const headerElm = document.createElement('div');
-      headerElm.classList.add('header-date');
       switch (category) {
         case Category.Past:
-          return null;
+          return '';
         case Category.Current:
-          headerElm.innerHTML = `
-            This Month<br/>
-            ${book.displayDate}
+          return `
+            <div class="header-date">
+              This Month<br/>
+              ${book.displayDate}
+            </div>
           `;
         default:
-          headerElm.innerHTML = `
-            ${book.displayDate}
+          return `
+            <div class="header-date">
+              ${book.displayDate}
+            </div>
           `;
       }
-      return headerElm;
     };
-    const renderCover = (book, category) => {
-      const container = document.createElement('div');
-      container.classList.add('container');
-      container.innerHTML = `
+    const renderCover = (book, category) => `
+      <div class="container">
         <img class="cover" src="covers/${book.cover}">
         <div class="details">
           <div>
             ${category === Category.Past ? `
               ${book.displayDateFull}
             ` : ''}
+            ${generateCalenderLinks(book).outerHTML}
           </div>
           <div>
             <div class="title">${book.title}</div>
@@ -259,23 +259,18 @@
             ` : ''}
           </div>
         </div>
-      `;
-      container.children[1].children[0].appendChild(generateCalenderLinks(book))
-      return container;
-    };
+      </div>
+    `;
     const renderBook = (book, category) => {
       if (!book.cover){
-        return null;
+        return '';
       }
-      const headerElm = renderHeader(book, category);
-      const coverElm = renderCover(book, category)
-      const bookElm = document.createElement('div');
-      bookElm.classList.add('book');
-      if (headerElm){
-        bookElm.appendChild(headerElm);
-      }
-      bookElm.appendChild(coverElm);
-      return bookElm;
+      return `
+        <div class="book">
+          ${renderHeader(book, category)}
+          ${renderCover(book, category)}
+        </div>
+      `;
     };
 
     // on pageload
@@ -312,21 +307,15 @@
         .reverse();
 
       if (upcomingBooks.length){
-        document.getElementById('this-month').appendChild(renderBook(upcomingBooks[0], Category.Current));
+        document.getElementById('this-month').innerHTML = renderBook(upcomingBooks[0], Category.Current);
       }
-      upcomingBooks
+      document.getElementById('upcoming').innerHTML = upcomingBooks
         .filter((b, i) => i > 0)
         .map(book => renderBook(book, Category.Upcoming))
-        .filter(b => b)
-        .forEach(comp => {
-          document.getElementById('upcoming').appendChild(comp);
-        });
-      pastBooks
+        .join('');
+      document.getElementById('past').innerHTML = pastBooks
         .map(book => renderBook(book, Category.Past))
-        .filter(b => b)
-        .forEach(comp => {
-          document.getElementById('past').appendChild(comp);
-        });
+        .join('');
     })();
 
   </script>
