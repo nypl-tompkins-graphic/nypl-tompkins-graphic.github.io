@@ -124,17 +124,19 @@
       color: var(--book-details);
     }
 
+    /* !important to override library css*/
     .calendar-container label {
       cursor: pointer;
+      text-decoration: underline;
     }
     .calendar-container a {
-      /*overridding library css*/
+      text-decoration: none;
       width: 100% !important;
       margin-left: 0px !important;
     }
-    .calendar-container input[type=checkbox].add-to-calendar-checkbox {
-      position: static !important;
+    .calendar-container input {
       display: none;
+      position: static !important;
     }
 
     .title {
@@ -265,10 +267,10 @@ https://www.nypl.org/events/programs/2019/02/04/graphic-novel-book-discussion
         <img class="cover" src="${book.cover}">
         <div class="details">
           <div>
-            ${category === Category.Past ? `
-              ${book.displayDateFull}
-            ` : ''}
-            ${generateCalenderLinks(book).outerHTML}
+            ${category === Category.Past
+              ? book.displayDateFull
+              : generateCalenderLinks(book).outerHTML
+            }
           </div>
           <div>
             <div class="title">${book.title}</div>
