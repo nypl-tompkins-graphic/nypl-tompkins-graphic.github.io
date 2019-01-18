@@ -116,9 +116,6 @@
       color: var(--book-details);
       background-color: rgba(0, 0, 0, 0.8);
     }
-    .container:hover .details {
-      opacity: 1;
-    }
     .details > div {
       margin: 1em 1em;
     }
@@ -151,6 +148,11 @@
       font-style: italic;
     }
 
+    @media (min-width: 601px){
+      .container:hover .details {
+        opacity: 1;
+      }
+    }
     @media (max-width: 600px){
       html {
         font-size: 16px;
@@ -169,6 +171,9 @@
       .cover {
         width: 100%;
         height: auto;
+      }
+      .details.mobile-show-details {
+        opacity: 1;
       }
     }
   </style>
@@ -311,6 +316,14 @@ https://www.nypl.org/events/programs/2019/02/04/graphic-novel-book-discussion
       `;
     };
 
+    const setupListeners = () => {
+      Array.from(document.getElementsByClassName('details')).forEach(elm => {
+        elm.addEventListener('click', evt => {
+          evt.target.classList.toggle('mobile-show-details');
+        });
+      });
+    };
+
     // on pageload
     (async () => {
       const resp = await fetch(`books.yaml?v=${new Date().getTime()}`);
@@ -358,6 +371,8 @@ https://www.nypl.org/events/programs/2019/02/04/graphic-novel-book-discussion
       document.getElementById('past').innerHTML = pastBooks
         .map(book => renderBook(book, Category.Past))
         .join('');
+
+      setupListeners();
     })();
 
   </script>
