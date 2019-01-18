@@ -121,10 +121,7 @@
     .author {
       font-style: italic;
     }
-    .goodreads {
-      margin-top: 2.5em;
-    }
-    .goodreads a {
+    .links a {
       color: var(--book-details);
     }
 
@@ -228,12 +225,13 @@
             <div class="title">${book.title}</div>
             <div class="author">${book.author}</div>
           </div>
-          <div>
-            ${book.goodreads ? `
-              <div class="goodreads">
-                <a href="${book.goodreads}">Goodreads</a>
-              </div>
-            ` : ''}
+          <div class="links">
+            <div>
+              <a href="${book.nypl || book.searchNypl}">NYPL</a>
+            </div>
+            <div>
+              <a href="${book.goodreads || book.searchGoodreads}">Goodreads</a>
+            </div>
           </div>
         </div>
       </div>
@@ -261,16 +259,20 @@
       const yesterday = dateToStr(new Date(today - 1000*60*60*24));
 
       const books = data.books.map(book => {
+        // setting nypl prop
+        const query = `${book.author} ${book.title}`;
+        book.searchGoodreads = `https://www.goodreads.com/search?q=${query.split(' ').join('+')}`;
+        book.searchNypl = `https://browse.nypl.org/iii/encore/search/C__S${query}__Orightresult__U?lang=eng&suite=def`;
+
+        // setting date stuff
         book.year = parseFloat(book.date.split('/')[0]);
         book.month = parseFloat(book.date.split('/')[1]);
         book.day = parseFloat(book.date.split('/')[2]);
         book.monthName = monthNames[book.month - 1];
-
         const todayYear = parseFloat(today.getFullYear());
         book.displayDateShort = `${book.monthName} ${book.day}`;
         book.displayDateFull = `${book.monthName} ${book.day}, ${book.year}`;
         book.displayDate = book.year >= todayYear ? book.displayDateShort : book.displayDateFull;
-
         return book;
       });
 
