@@ -60,6 +60,11 @@
       margin-right: 0px;
     }
 
+    .instructions,
+    .location {
+      margin: 1em;
+    }
+
     .shelf {
       width: 100%;
       display: flex;
@@ -115,7 +120,13 @@
     .details > div > div {
       margin: 0.2em 0px;
     }
+    .details a {
+      color: var(--book-details);
+    }
 
+    .calendar-container label {
+      cursor: pointer;
+    }
     .calendar-container a {
       /*overridding library css*/
       width: 100% !important;
@@ -131,12 +142,6 @@
     }
     .author {
       font-style: italic;
-    }
-    .goodreads {
-      margin-top: 2.5em;
-    }
-    a {
-      color: var(--book-details);
     }
 
     @media (max-width: 600px){
@@ -172,7 +177,17 @@
     </span>
     <img class="logo" src="nypl.png"/>
   </div>
+  <div class="instructions">
+    First Monday of each month at 6PM
+    <br/>
+    Copies of the graphic novel are available to check out at the front desk
+  </div>
   <div class="shelf" id="this-month"></div>
+  <div class="location">
+    <b>Located at:</b> 331 East 10th Street, New York, NY, 10009
+    <br/>
+    You can call the library at (212) 228-4747 or email <a href="mailto:lillianlai@nypl.org">lillianlai@nypl.org</a>
+  </div>
   <div class="seperator"> Upcoming Books </div>
   <div class="shelf" id="upcoming"></div>
   <div class="seperator"> Past Selections </div>
@@ -216,7 +231,7 @@
           title: `NYPL Graphic Novel Book Club - ${book.title}`,
           start: book.dt,
           duration: 60,
-          address: 'Tompkins Square Library',
+          address: 'Tompkins Square Library, 331 E 10th St, New York, NY 10009, USA',
           // description: 'todo',
         }
       });
@@ -230,7 +245,7 @@
         case Category.Current:
           return `
             <div class="header-date">
-              This Month<br/>
+              <b>Next Meeting:</b>
               ${book.displayDate}
             </div>
           `;
@@ -244,7 +259,7 @@
     };
     const renderCover = (book, category) => `
       <div class="container">
-        <img class="cover" src="covers/${book.cover}">
+        <img class="cover" src="${book.cover}">
         <div class="details">
           <div>
             ${category === Category.Past ? `
@@ -256,10 +271,16 @@
             <div class="title">${book.title}</div>
             <div class="author">${book.author}</div>
           </div>
-          <div>
-            ${book.goodreads ? `
-              <div class="goodreads">
-                <a href="${book.goodreads}">Goodreads</a>
+          <div class="links">
+            <div>
+              <a href="${book.nypl || book.searchNypl}">NYPL</a>
+            </div>
+            <div>
+              <a href="${book.goodreads || book.searchGoodreads}">Goodreads</a>
+            </div>
+            ${book.wikipedia ? `
+              <div>
+                <a href="${book.wikipedia}">Wikipedia</a>
               </div>
             ` : ''}
           </div>
@@ -289,17 +310,21 @@
       const yesterday = dateToStr(new Date(today - 1000*60*60*24));
 
       const books = data.books.map(book => {
+        // setting nypl prop
+        const query = `${book.author} ${book.title}`;
+        book.searchGoodreads = `https://www.goodreads.com/search?q=${query.split(' ').join('+')}`;
+        book.searchNypl = `https://browse.nypl.org/iii/encore/search/C__S${query}__Orightresult__U?lang=eng&suite=def`;
+
+        // setting date stuff
         book.year = parseFloat(book.date.split('/')[0]);
         book.month = parseFloat(book.date.split('/')[1]) - 1;
         book.day = parseFloat(book.date.split('/')[2]);
         book.monthName = monthNames[book.month];
         book.dt = new Date(book.year, book.month, book.day, 18);
-
         const todayYear = parseFloat(today.getFullYear());
         book.displayDateShort = `${book.monthName} ${book.day}`;
         book.displayDateFull = `${book.monthName} ${book.day}, ${book.year}`;
         book.displayDate = book.year >= todayYear ? book.displayDateShort : book.displayDateFull;
-
         return book;
       });
 
