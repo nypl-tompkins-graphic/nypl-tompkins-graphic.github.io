@@ -10,6 +10,7 @@
   <meta property="og:url" content="https://nypl-tompkins-graphic.github.io/" />
   <meta property="og:image" content="https://nypl-tompkins-graphic.github.io/favicon.png" />
 
+  <link rel="stylesheet" href="tools/ouical.css" />
   <style type="text/css">
     html {
       font-size: 18px;
@@ -78,7 +79,7 @@
     #this-month .book {
       font-size: 1.2rem;
     }
-    .date {
+    .header-date {
       margin: 1em 0em;
     }
     .container {
@@ -119,15 +120,30 @@
     .details > div > div {
       margin: 0.2em 0px;
     }
+    .details a {
+      color: var(--book-details);
+    }
+
+    /* !important to override library css*/
+    .calendar-container label {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .calendar-container a {
+      text-decoration: none;
+      width: 100% !important;
+      margin-left: 0px !important;
+    }
+    .calendar-container input {
+      display: none;
+      position: static !important;
+    }
 
     .title {
       font-weight: bold;
     }
     .author {
       font-style: italic;
-    }
-    .links a {
-      color: var(--book-details);
     }
 
     @media (max-width: 600px){
@@ -179,7 +195,8 @@
   <div class="seperator"> Past Selections </div>
   <div class="shelf" id="past"></div>
 
-  <script src="js-yaml.min.js"></script>
+  <script src="tools/js-yaml.min.js"></script>
+  <script src="tools/ouical.min.js"></script>
   <script type="text/javascript">
 
     // helper funcs
@@ -206,22 +223,40 @@
         return 0;
       }
     }
+    const generateCalenderLinks = book => {
+      return createCalendar({
+        options: {
+          class: 'calendar-container',
+          id: `calendar-${book.date}`,
+        },
+        data: {
+          title: `NYPL Graphic Novel Book Club - ${book.title}`,
+          start: book.dt,
+          duration: 60,
+          address: 'Tompkins Square Library, 331 E 10th St, New York, NY 10009, USA',
+          description: `Hosted on the second floor
+https://www.nypl.org/locations/tompkins-square
+https://www.nypl.org/events/programs/2019/02/04/graphic-novel-book-discussion
+          `,
+        }
+      });
+    }
 
     // render funcs
-    const renderDate = (book, category) => {
+    const renderHeader = (book, category) => {
       switch (category) {
         case Category.Past:
           return '';
         case Category.Current:
           return `
-            <div class="date">
+            <div class="header-date">
               <b>Next Meeting:</b>
               ${book.displayDate}
             </div>
           `;
         default:
           return `
-            <div class="date">
+            <div class="header-date">
               ${book.displayDate}
             </div>
           `;
@@ -231,10 +266,11 @@
       <div class="container">
         <img class="cover" src="${book.cover}">
         <div class="details">
-          <div class="date">
-            ${category === Category.Past ? `
-              ${book.displayDateFull}
-            ` : ''}
+          <div>
+            ${category === Category.Past
+              ? book.displayDateFull
+              : generateCalenderLinks(book).outerHTML
+            }
           </div>
           <div>
             <div class="title">${book.title}</div>
@@ -262,7 +298,7 @@
       }
       return `
         <div class="book">
-          ${renderDate(book, category)}
+          ${renderHeader(book, category)}
           ${renderCover(book, category)}
         </div>
       `;
@@ -286,9 +322,10 @@
 
         // setting date stuff
         book.year = parseFloat(book.date.split('/')[0]);
-        book.month = parseFloat(book.date.split('/')[1]);
+        book.month = parseFloat(book.date.split('/')[1]) - 1;
         book.day = parseFloat(book.date.split('/')[2]);
-        book.monthName = monthNames[book.month - 1];
+        book.monthName = monthNames[book.month];
+        book.dt = new Date(book.year, book.month, book.day, 18);
         const todayYear = parseFloat(today.getFullYear());
         book.displayDateShort = `${book.monthName} ${book.day}`;
         book.displayDateFull = `${book.monthName} ${book.day}, ${book.year}`;
