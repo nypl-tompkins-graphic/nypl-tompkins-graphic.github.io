@@ -59,6 +59,11 @@
       margin-right: 0px;
     }
 
+    .instructions,
+    .location {
+      margin: 1em;
+    }
+
     .shelf {
       width: 100%;
       display: flex;
@@ -158,7 +163,17 @@
     </span>
     <img class="logo" src="nypl.png"/>
   </div>
+  <div class="instructions">
+    First Monday of each month at 6PM
+    <br/>
+    Copies of the graphic novel are available to check out at the front desk
+  </div>
   <div class="shelf" id="this-month"></div>
+  <div class="location">
+    <b>Located at:</b> 331 East 10th Street, New York, NY, 10009
+    <br/>
+    You can call the library at (212) 228-4747 or email <a href="mailto:lillianlai@nypl.org">lillianlai@nypl.org</a>
+  </div>
   <div class="seperator"> Upcoming Books </div>
   <div class="shelf" id="upcoming"></div>
   <div class="seperator"> Past Selections </div>
@@ -200,7 +215,7 @@
         case Category.Current:
           return `
             <div class="date">
-              This Month<br/>
+              <b>Next Meeting:</b>
               ${book.displayDate}
             </div>
           `;
@@ -214,7 +229,7 @@
     };
     const renderCover = (book, category) => `
       <div class="container">
-        <img class="cover" src="covers/${book.cover}">
+        <img class="cover" src="${book.cover}">
         <div class="details">
           <div class="date">
             ${category === Category.Past ? `
@@ -232,6 +247,11 @@
             <div>
               <a href="${book.goodreads || book.searchGoodreads}">Goodreads</a>
             </div>
+            ${book.wikipedia ? `
+              <div>
+                <a href="${book.wikipedia}">Wikipedia</a>
+              </div>
+            ` : ''}
           </div>
         </div>
       </div>
