@@ -64,6 +64,11 @@
     .location {
       margin: 1em;
     }
+    .location {
+      border: 1px solid var(--foreground);
+      padding: 1em;
+      display: inline-block;
+    }
 
     .shelf {
       width: 100%;
@@ -186,7 +191,9 @@
   </div>
   <div class="shelf" id="this-month"></div>
   <div class="location">
-    <b>Located at:</b> 331 East 10th Street, New York, NY, 10009
+    <b>Tompkins Square Library</b>
+    <br/>
+    331 East 10th Street, New York, NY, 10009
     <br/>
     You can call the library at (212) 228-4747 or email <a href="mailto:lillianlai@nypl.org">lillianlai@nypl.org</a>
   </div>
@@ -310,9 +317,8 @@ https://www.nypl.org/events/programs/2019/02/04/graphic-novel-book-discussion
       const text = await resp.text();
       const data = jsyaml.load(text);
 
-      // const today = new Date('2019-03-01');
+      // const today = new Date(2019, 1, 5);
       const today = new Date();
-      const yesterday = dateToStr(new Date(today - 1000*60*60*24));
 
       const books = data.books.map(book => {
         // setting nypl prop
@@ -333,11 +339,12 @@ https://www.nypl.org/events/programs/2019/02/04/graphic-novel-book-discussion
         return book;
       });
 
+      const todayStr = dateToStr(today);
       const upcomingBooks = books
-        .filter(b => b.date >= yesterday)
+        .filter(b => b.date >= todayStr)
         .sort(compareBook);
       const pastBooks = books
-        .filter(b => b.date < yesterday)
+        .filter(b => b.date < todayStr)
         .sort(compareBook)
         .reverse();
 
