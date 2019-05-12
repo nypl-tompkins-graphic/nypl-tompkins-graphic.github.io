@@ -1,5 +1,44 @@
 books:
 
+  - date: 2019/11/04
+    title: Killing and Dying
+    author: Adrian Tomine
+    cover: covers/killing_and_dying.jpg
+    goodreads: https://www.goodreads.com/book/show/23848562-killing-and-dying
+    wikipedia: https://en.wikipedia.org/wiki/Adrian_Tomine
+
+  - date: 2019/10/07
+    title: My Favorite Thing is Monsters
+    author: Emil Ferris
+    cover: covers/my_favorite_thing_is_monsters_2.jpg
+    goodreads: https://www.goodreads.com/book/show/32191885-my-favorite-thing-is-monsters-vol-2
+    wikipedia: https://en.wikipedia.org/wiki/My_Favorite_Thing_Is_Monsters
+
+  - date: 2019/09/09
+    title: Jimmy Corrigan, The Smartest Kid on Earth
+    author: Chris Ware
+    cover: covers/jimmy_corrigan.jpg
+    goodreads: https://www.goodreads.com/book/show/34072.Jimmy_Corrigan_the_Smartest_Kid_on_Earth
+    wikipedia: https://en.wikipedia.org/wiki/Jimmy_Corrigan,_the_Smartest_Kid_on_Earth
+
+  - date: 2019/08/05
+    title: Can't We Talk about Something More Pleasant?
+    author: Roz Chast
+    cover: covers/cant_we_talk_about_something_more_pleasant.jpg
+    goodreads: https://www.goodreads.com/book/show/18594409-can-t-we-talk-about-something-more-pleasant
+
+  - date:  2019/07/01
+    title: Through the Woods
+    author: Emily Carroll
+    cover: covers/through_the_woods.jpg
+    goodreads: https://www.goodreads.com/book/show/18659623-through-the-woods
+
+  - date: 2019/06/03
+    title: On a Sunbeam
+    author: Tillie Walden
+    cover: covers/on_a_sunbeam.jpg
+    goodreads: https://www.goodreads.com/book/show/33297976-on-a-sunbeam
+
   - date: 2019/05/06
     title: Sabrina
     author: Nick Drnaso

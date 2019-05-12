@@ -202,7 +202,7 @@
     <br/>
     You can call the library at (212) 228-4747 or email <a href="mailto:lillianlai@nypl.org">lillianlai@nypl.org</a>
   </div>
-  <div class="seperator"> Upcoming Books </div>
+  <div class="seperator" id="upcoming-seperator"> Upcoming Books </div>
   <div class="shelf" id="upcoming"></div>
   <div class="seperator"> Past Selections </div>
   <div class="shelf" id="past"></div>
@@ -363,11 +363,15 @@ https://www.nypl.org/events/programs/2019/02/04/graphic-novel-book-discussion
 
       if (upcomingBooks.length){
         document.getElementById('this-month').innerHTML = renderBook(upcomingBooks[0], Category.Current);
+        document.getElementById('upcoming').innerHTML = upcomingBooks
+          .filter((b, i) => i > 0)
+          .map(book => renderBook(book, Category.Upcoming))
+          .join('');
       }
-      document.getElementById('upcoming').innerHTML = upcomingBooks
-        .filter((b, i) => i > 0)
-        .map(book => renderBook(book, Category.Upcoming))
-        .join('');
+      if (upcomingBooks.length < 2) {
+        document.getElementById('upcoming-seperator').remove();
+        document.getElementById('upcoming').remove();
+      }
       document.getElementById('past').innerHTML = pastBooks
         .map(book => renderBook(book, Category.Past))
         .join('');
