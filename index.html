@@ -157,11 +157,20 @@
     }
 
     @media (min-width: 601px){
+      .mobile-only {
+        display: none;
+      }
       .container:hover .details {
         opacity: 1;
       }
+      .book {
+        padding: 0.5em;
+      }
     }
     @media (max-width: 600px){
+      .desktop-only {
+        display: none;
+      }
       html {
         font-size: 16px;
       }
@@ -183,8 +192,8 @@
       .details.mobile-show-details {
         opacity: 1;
       }
-      .desktop-only {
-        display: none;
+      .book {
+        padding: 0.5em 1em;
       }
     }
   </style>
@@ -209,6 +218,9 @@
     </div>
     <div class="desktop-only">
       Hover your mouse over the book covers to see more info
+    </div>
+    <div class="mobile-only">
+      Tap the book covers to see more info
     </div>
   </div>
   <div class="shelf" id="this-month"></div>
