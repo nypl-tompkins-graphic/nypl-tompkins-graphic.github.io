@@ -183,6 +183,9 @@
       .details.mobile-show-details {
         opacity: 1;
       }
+      .desktop-only {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -198,9 +201,15 @@
     <img class="logo" src="nypl.png"/>
   </div>
   <div class="instructions">
-    First Monday of each month at 6PM
-    <br/>
-    Copies of the graphic novel are available to check out at the front desk
+    <div>
+      First Monday of each month at 6PM
+    </div>
+    <div>
+      Copies of the graphic novel are available to check out at the front desk
+    </div>
+    <div class="desktop-only">
+      Hover your mouse over the book covers to see more info
+    </div>
   </div>
   <div class="shelf" id="this-month"></div>
   <div class="location">
