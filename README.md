@@ -1,4 +1,4 @@
-# nypl-tompkins-graphic.github.io
+# [nypl-tompkins-graphic.github.io](https://nypl-tompkins-graphic.github.io/)
 
 Landing page for Book Club
 
