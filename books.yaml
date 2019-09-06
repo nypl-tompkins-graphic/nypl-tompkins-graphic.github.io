@@ -8,11 +8,11 @@ books:
     wikipedia: https://en.wikipedia.org/wiki/Adrian_Tomine
 
   - date: 2019/10/07
-    title: My Favorite Thing is Monsters
-    author: Emil Ferris
-    cover: covers/my_favorite_thing_is_monsters_2.jpg
-    goodreads: https://www.goodreads.com/book/show/32191885-my-favorite-thing-is-monsters-vol-2
-    wikipedia: https://en.wikipedia.org/wiki/My_Favorite_Thing_Is_Monsters
+    title: Fun Home
+    author: Alison Bechdel
+    cover: covers/fun_home.jpg
+    goodreads: https://www.goodreads.com/book/show/26135825-fun-home
+    wikipedia: https://en.wikipedia.org/wiki/Fun_Home
 
   - date: 2019/09/09
     title: Jimmy Corrigan, The Smartest Kid on Earth
