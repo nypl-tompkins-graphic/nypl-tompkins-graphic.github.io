@@ -3,140 +3,140 @@ books:
   - date: 2020/01/06
     title: Waves
     author: Ingrid Chabbert
-    cover: covers/waves.jpg
+    cover: covers/202001_waves.jpg
     goodreads: https://www.goodreads.com/book/show/40744544-waves
 
   - date: 2019/12/02
     title: I Moved to Los Angeles to Work in Animation
     author: Natalie Nourigat
-    cover: covers/moved_la_animation.jpg
+    cover: covers/201912_moved_la_animation.jpg
     goodreads: https://www.goodreads.com/book/show/40538762-i-moved-to-los-angeles-to-work-in-animation
 
   - date: 2019/11/04
     title: Killing and Dying
     author: Adrian Tomine
-    cover: covers/killing_and_dying.jpg
+    cover: covers/201911_killing_and_dying.jpg
     goodreads: https://www.goodreads.com/book/show/23848562-killing-and-dying
     wikipedia: https://en.wikipedia.org/wiki/Adrian_Tomine
 
   - date: 2019/10/07
     title: Fun Home
     author: Alison Bechdel
-    cover: covers/fun_home.jpg
+    cover: covers/201910_fun_home.jpg
     goodreads: https://www.goodreads.com/book/show/26135825-fun-home
     wikipedia: https://en.wikipedia.org/wiki/Fun_Home
 
   - date: 2019/09/09
     title: Jimmy Corrigan, The Smartest Kid on Earth
     author: Chris Ware
-    cover: covers/jimmy_corrigan.jpg
+    cover: covers/201909_jimmy_corrigan.jpg
     goodreads: https://www.goodreads.com/book/show/34072.Jimmy_Corrigan_the_Smartest_Kid_on_Earth
     wikipedia: https://en.wikipedia.org/wiki/Jimmy_Corrigan,_the_Smartest_Kid_on_Earth
 
   - date: 2019/08/05
     title: Can't We Talk about Something More Pleasant?
     author: Roz Chast
-    cover: covers/cant_we_talk_about_something_more_pleasant.jpg
+    cover: covers/201908_cant_we_talk_about_something_more_pleasant.jpg
     goodreads: https://www.goodreads.com/book/show/18594409-can-t-we-talk-about-something-more-pleasant
 
-  - date:  2019/07/01
+  - date: 2019/07/01
     title: Through the Woods
     author: Emily Carroll
-    cover: covers/through_the_woods.jpg
+    cover: covers/201907_through_the_woods.jpg
     goodreads: https://www.goodreads.com/book/show/18659623-through-the-woods
 
   - date: 2019/06/03
     title: On a Sunbeam
     author: Tillie Walden
-    cover: covers/on_a_sunbeam.jpg
+    cover: covers/201906_on_a_sunbeam.jpg
     goodreads: https://www.goodreads.com/book/show/33297976-on-a-sunbeam
 
   - date: 2019/05/06
     title: Sabrina
     author: Nick Drnaso
-    cover: covers/sabrina.jpg
+    cover: covers/201905_sabrina.jpg
     goodreads: https://www.goodreads.com/book/show/37533587-sabrina
     wikipedia: https://en.wikipedia.org/wiki/Sabrina_(comics)
 
   - date: 2019/04/01
     title: RX
     author: Rachel Lindsay
-    cover: covers/rx.jpg
+    cover: covers/201904_rx.jpg
     goodreads: https://www.goodreads.com/book/show/37954232-rx
 
   - date: 2019/03/04
     title: The Prince and the Dressmaker
     author: Jen Wang
-    cover: covers/prince_dressmaker.jpg
+    cover: covers/201903_prince_dressmaker.jpg
     goodreads: https://www.goodreads.com/book/show/34506912-the-prince-and-the-dressmaker
 
   - date: 2019/02/04
     title: My Lesbian Experience with Loneliness
     author: Kabi Nagata
-    cover: covers/lesbian_experience_loneliness.jpg
+    cover: covers/201902_lesbian_experience_loneliness.jpg
     goodreads: https://www.goodreads.com/book/show/33113683-my-lesbian-experience-with-loneliness
     wikipedia: https://en.wikipedia.org/wiki/My_Lesbian_Experience_With_Loneliness
 
   - date: 2019/01/07
     title: American Born Chinese
     author: Gene Luen Yang
-    cover: covers/american_born_chinese.jpg
+    cover: covers/201901_american_born_chinese.jpg
     goodreads: https://www.goodreads.com/book/show/118944.American_Born_Chinese
     wikipedia: https://en.wikipedia.org/wiki/American_Born_Chinese
 
   - date: 2018/12/03
     title: The Customer is Always Wrong
     author: Mimi Pond
-    cover: covers/customer_wrong.jpg
+    cover: covers/201812_customer_wrong.jpg
     goodreads: https://www.goodreads.com/book/show/32783835-the-customer-is-always-wrong
     wikipedia: https://en.wikipedia.org/wiki/Mimi_Pond#The_Customer_is_Always_Wrong
 
   - date: 2018/11/05
     title: 4 Kids Walk Into a Bank
     author: Matthew Rosenberg
-    cover: covers/kids_bank.jpg
+    cover: covers/201811_kids_bank.jpg
     goodreads: https://www.goodreads.com/book/show/36260018-4-kids-walk-into-a-bank
 
   - date: 2018/10/01
     title: One More Year
     author: Simon Hanselmann
-    cover: covers/one_more_year.png
+    cover: covers/201810_one_more_year.png
     goodreads: https://www.goodreads.com/book/show/30341591-one-more-year
     wikipedia: https://en.wikipedia.org/wiki/Simon_Hanselmann
 
   - date: 2018/08/06
     title: Spinning
     author: Tillie Walden
-    cover: covers/spinning.jpg
+    cover: covers/201808_spinning.jpg
     goodreads: https://www.goodreads.com/book/show/33163388-spinning
 
   - date: 2018/07/02
     title: I Am Alfonso Jones
     author: Tony Medina
-    cover: covers/alfonso_jones.jpg
+    cover: covers/201807_alfonso_jones.jpg
     goodreads: https://www.goodreads.com/book/show/34099859-i-am-alfonso-jones
 
   - date: 2018/06/04
     title: The Best We Could Do
     author: Thi Bui
-    cover: covers/best_we_could_do.jpg
+    cover: covers/201806_best_we_could_do.jpg
     goodreads: https://www.goodreads.com/book/show/29936927-the-best-we-could-do
 
   - date: 2018/05/07
     title: Boundless
     author: Jillian Tamaki
-    cover: covers/boundless.jpg
+    cover: covers/201805_boundless.jpg
     goodreads: https://www.goodreads.com/book/show/32783840-boundless
 
   - date: 2018/04/02
     title: Tenements, Towers, & Trash
     author: Julia Wertz
-    cover: covers/tenements_towers_trash.jpg
+    cover: covers/201804_tenements_towers_trash.jpg
     goodreads: https://www.goodreads.com/book/show/34219893-tenements-towers-trash
 
   - date: 2018/03/05
     title: My Favorite Thing is Monsters
     author: Emil Ferris
-    cover: covers/my_favorite_thing_is_monsters_1.jpg
+    cover: covers/201803_my_favorite_thing_is_monsters_1.jpg
     goodreads: https://www.goodreads.com/book/show/29069374-my-favorite-thing-is-monsters-vol-1
 
