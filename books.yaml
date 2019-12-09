@@ -1,5 +1,41 @@
 books:
 
+  - date: 2020/07/06
+    title: this woman's work
+    author: Julie Delporte
+    cover: covers/202007_this_womans_work.jpg
+    goodreads: https://www.goodreads.com/book/show/40230144-this-woman-s-work
+
+  - date: 2020/06/08
+    title: 'Cheap Novelties: The Pleasures of Urban Decay'
+    author: Ben Katchor
+    cover: covers/202006_cheap_novelties.jpg
+    goodreads: https://www.goodreads.com/book/show/378612.Cheap_Novelties
+
+  - date: 2020/05/04
+    title: BTTM FDRS
+    author: Ezra Clayton Daniels & Ben Passmore
+    cover: covers/202005_bttm_fdrs.jpg
+    goodreads: https://www.goodreads.com/book/show/42123830-bttm-fdrs
+
+  - date: 2020/04/06
+    title: Seconds
+    author: Bryan Lee O'Malley
+    cover: covers/202004_seconds.jpg
+    goodreads: https://www.goodreads.com/book/show/18630542-seconds
+
+  - date: 2020/03/09
+    title: Patience
+    author: Daniel Clowes
+    cover: covers/202003_patience.jpg
+    goodreads: https://www.goodreads.com/book/show/25652706-patience
+
+  - date: 2020/02/03
+    title: Asterios Polyp
+    author: David Mazzucchelli
+    cover: covers/202002_asterios_polyp.jpg
+    goodreads: https://www.goodreads.com/book/show/4070095-asterios-polyp
+
   - date: 2020/01/06
     title: Waves
     author: Ingrid Chabbert
